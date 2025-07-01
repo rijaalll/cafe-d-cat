@@ -1,30 +1,34 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="/logo-7.png" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="d-flex">
+    <!-- Sidebar untuk Desktop -->
+    <Sidebar class="d-none d-md-flex" />
+
+    <!-- Konten Utama -->
+    <div class="main-content flex-grow-1">
+      <div class="container-fluid p-4">
+        <router-view />
+      </div>
+    </div>
+
+    <!-- Bottom Nav untuk Mobile -->
+    <BottomNav class="d-md-none" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import Sidebar from './components/Sidebar.vue';
+import BottomNav from './components/BottomNav.vue';
+</script>
+
+<style>
+.main-content {
+  /* Memberi ruang untuk bottom nav di mobile */
+  padding-bottom: 70px; 
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-bottom: 0;
+  }
 }
 </style>
