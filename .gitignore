@@ -1,0 +1,8 @@
+vue/node_modules
+express/node_modules
+
+vue/public/
+express/images/
+
+vue/.env
+express/.env
